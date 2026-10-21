@@ -39,7 +39,7 @@ export default function ParticleLogo({
   }, [count]);
 
   // Live buffers: current positions, scatter origins, burst velocities, colors.
-  const { positions, scatter, velocities, colors } = useMemo(() => {
+  const { positions, velocities, colors } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const scat = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
