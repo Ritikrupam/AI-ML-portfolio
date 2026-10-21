@@ -427,7 +427,7 @@ shadow-[0_0_45px_rgba(255,235,180,.95)]
   "
 >
   <PortraitAssembly
-    src="/profile/ritik.png"
+    src={`${import.meta.env.BASE_URL}profile/ritik.png`}
     finished={finished}
   />
 </div>
