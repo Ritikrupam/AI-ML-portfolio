@@ -12,6 +12,7 @@ import Contact from './sections/Contact';
 import { useLenis } from './hooks/useLenis';
 import { useDeviceTier } from './hooks/useDeviceTier';
 import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
+import GreetingIntro from "./components/GreetingIntro";
 
 type Phase = 'forming' | 'idle' | 'burst';
 
@@ -32,7 +33,8 @@ export default function App() {
   const [phase, setPhase] = useState<Phase>('forming');
   const [loading, setLoading] = useState(true);
   const [textReady, setTextReady] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+  const [showGreeting, setShowGreeting] = useState(true);
+const [showIntro, setShowIntro] = useState(false);
 
   useLenis(!reduced);
 
@@ -69,10 +71,17 @@ export default function App() {
       <Nav />
 
       <main>
-        {showIntro && (
-  <LampIntro
-    onComplete={() => setShowIntro(false)}
+        {showGreeting && (
+  <GreetingIntro
+    onComplete={() => {
+      setShowGreeting(false);
+      setShowIntro(true);
+    }}
   />
+)}
+
+{showIntro && (
+  <LampIntro onComplete={() => setShowIntro(false)} />
 )}
 
 <Hero
